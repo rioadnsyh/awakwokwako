@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>awkokawwok</title>
+    <p>lu punya crush sama gw kan?!!</p>
+    <style>
+        .button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+        #iyaButton, #tidakButton {
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <button id="iyaButton" class="button">Iya</button>
+    <button id="tidakButton" class="button">Tidak</button>
+
+    <script>
+        const iyaButton = document.getElementById('iyaButton');
+        const tidakButton = document.getElementById('tidakButton');
+        let isTrollMode = true;
+
+        // Fungsi untuk memindahkan tombol secara acak
+        function moveButton(button) {
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const newX = Math.floor(Math.random() * (windowWidth - button.offsetWidth));
+            const newY = Math.floor(Math.random() * (windowHeight - button.offsetHeight));
+            button.style.left = newX + 'px';
+            button.style.top = newY + 'px';
+        }
+
+        // Event listener untuk tombol "Tidak"
+        tidakButton.addEventListener('click', () => {
+            if (isTrollMode) {
+                moveButton(tidakButton);
+            }
+        });
+
+        // Event listener untuk tombol "Iya"
+        iyaButton.addEventListener('click', () => {
+            alert("Akhirnya kamu jujur!");
+            isTrollMode = false; // Matikan mode troll
+            // Tambahkan aksi lain jika tombol "Iya" ditekan (misalnya, menampilkan pesan, redirect ke halaman lain)
+        });
+
+        // Memindahkan tombol "Tidak" secara acak saat halaman dimuat
+        moveButton(tidakButton);
+    </script>
+</body>
+</html>
